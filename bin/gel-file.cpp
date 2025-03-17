@@ -84,6 +84,17 @@ public:
 					cout << "ident[EI_OSABI] = " << ef->ident()[EI_OSABI] << "\n";
 				}
 
+				for(int i=0 ; i < f->countSections() ; ++i) {
+					Section *sec = f->section(i);
+					cerr << "Segment: name=" << sec->name() 
+						 << " addr=" << sec->baseAddress() 
+						 << " size=" << sec->size() 
+						 << " exec: " << sec->isExecutable()
+						 << " writable: " << sec->isWritable()
+						 << " content: " << sec->hasContent()
+						 << "\n"; 
+				}
+
 				delete f;
 			}
 			catch(gel::Exception& e) {
