@@ -217,6 +217,7 @@ public:
 
 	t::uint64 value()	override { return _info->st_value; }
 	t::uint64 size()	override { return _info->st_size; }
+	void size(t::uint64 s) override { _info->st_size = s; }
 
 	type_t type() override {
 		switch(ELF32_ST_TYPE(_info->st_info)) {

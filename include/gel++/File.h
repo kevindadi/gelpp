@@ -96,6 +96,7 @@ public:
 	virtual t::uint64 size() = 0;
 	virtual type_t type() = 0;
 	virtual bind_t bind() = 0;
+	virtual void size(t::uint64 s) = 0;
 };
 
 

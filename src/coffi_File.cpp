@@ -59,6 +59,7 @@ public:
 	// cstring name() override { return _sym.get_name().c_str(); }
 	// t::uint64 value() override { return _sym.get_value(); }
 	t::uint64 size() override { return 0; }
+	void size(t::uint64 s) override { }
 	type_t type() override { return _type; }
 	bind_t bind() override { return _bind; }
 private:

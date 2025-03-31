@@ -106,6 +106,14 @@ class SymbolTable: public gel::SymbolTable {
 public:
 	~SymbolTable();
 	void record(elm::t::uint8 *mem);
+	/**
+	 * @brief Some functions have a size==0 in the symbol table but actually have code
+	 * 
+	 * We noticed this function with FreeRTOS for the "SWI handler" which is an assembly function
+	 * for some reason in the symbol table, the declared symbol has a size==0. This method
+	 * aims to provide the size of empty functions by looking when does the next function starts
+	 */
+	void fixEmptyFunc();
 private:
 	List<elm::t::uint8 *> mems;
 };

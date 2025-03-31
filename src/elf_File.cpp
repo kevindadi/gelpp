@@ -18,6 +18,7 @@
  */
 
 #include <elm/array.h>
+#include <elm/data/SortedList.h>
 #include <gel++/elf/defs.h>
 #include <gel++/elf/File.h>
 #include <gel++/elf/UnixBuilder.h>
@@ -137,9 +138,11 @@ const gel::SymbolTable& File::symbols() {
 			if(s->type() == SHT_SYMTAB || s->type() == SHT_DYNSYM)
 				fillSymbolTable(*syms, s);
 		}
+		syms->fixEmptyFunc();
 	}
 	return *syms;
 }
+
 
 /**
  * Get the program headers.
@@ -534,6 +537,26 @@ SymbolTable::~SymbolTable() {
 ///
 void SymbolTable::record(elm::t::uint8 *mem) {
 	mems.add(mem);
+}
+
+void SymbolTable::fixEmptyFunc() {
+	HashMap<t::uint64, cstring> syms;
+	SortedList<t::uint64> _keys;
+
+	for(auto k : *this)
+		syms.add(k->value(), k->name());
+	for(t::uint64 ka : syms.keys())
+		_keys.add(ka);
+	
+	int i=0;
+	for(t::uint64 ka : _keys) {
+		gel::Symbol *s = fetch(syms[ka]);
+	 	if(s->size() == 0 && s->type() == gel::Symbol::FUNC && i < _keys.count()) {
+			gel::Symbol *snext = fetch(syms[_keys[i+1]]);
+			s->size(snext->value() - s->value());
+		}
+		++i;
+	}
 }
 
 
