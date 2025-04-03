@@ -61,6 +61,7 @@ public:
 	virtual bool isExecutable() = 0;
 	virtual bool isWritable() = 0;
 	virtual bool hasContent() = 0;
+	virtual bool hasContentInFile() = 0;
 	virtual Buffer buffer() = 0;
 };
 

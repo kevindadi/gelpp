@@ -172,6 +172,7 @@ public:
 	bool isExecutable(void) override;
 	bool isWritable(void) override;
 	bool hasContent(void) override;
+	bool hasContentInFile(void) override {return true;};
 	Buffer buffer(void) override;
 	size_t offset() override;
 	size_t fileSize() override;

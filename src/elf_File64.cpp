@@ -352,6 +352,9 @@ size_t Section64::fileSize() {
 	return _info->sh_size;
 }
 
+bool Section64::hasContentInFile() {
+	return (_info->sh_type & SHT_NOBITS) != 0;
+}
 
 /**
  * @fn const Elf32_Shdr& Section::info(void);

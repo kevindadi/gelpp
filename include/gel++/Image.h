@@ -63,6 +63,7 @@ public:
 	bool isExecutable() override;
 	bool isWritable() override;
 	bool hasContent() override;
+	bool hasContentInFile() override;
 	Buffer buffer() override;
 
 private:

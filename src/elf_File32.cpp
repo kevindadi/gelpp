@@ -344,6 +344,9 @@ bool Section32::isWritable() {
 bool Section32::hasContent() {
 	return _info->sh_size != 0;
 }
+bool Section32::hasContentInFile() {
+	return (_info->sh_type & SHT_NOBITS) == 0;
+}
 
 ///
 size_t Section32::fileSize() {

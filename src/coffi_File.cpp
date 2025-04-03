@@ -98,6 +98,7 @@ public:
 		{ return true; }
 	bool hasContent() override
 		{ return (_sect->get_flags() & IMAGE_SCN_CNT_UNINITIALIZED_DATA) == 0; }
+	bool hasContentInFile() override { return true; }
 	Buffer buffer() override {
 		// ASSERT(_sect->get_data_size());
 		// ASSERT(_sect->get_data());
@@ -134,6 +135,7 @@ public:
 		{ return true; }
 	bool hasContent() override
 		{ return (_sect->get_flags() & IMAGE_SCN_CNT_UNINITIALIZED_DATA) == 0; }
+	bool hasContentInFile() override { return true;}
 	size_t offset() override
 		{ return _sect->get_data_offset(); }
 	size_t fileSize() override

@@ -50,6 +50,7 @@ public:
 	bool isExecutable() 	override { return _head->flags() & PF_X; }
 	bool isWritable()		override { return _head->flags() & PF_W; }
 	bool hasContent()		override { return true; }
+	bool hasContentInFile()		override { return (_head->type() & SHT_NOBITS) == 0; }
 	Buffer buffer()			override { return _head->content(); }
 
 private:

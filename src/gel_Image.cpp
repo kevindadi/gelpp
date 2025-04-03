@@ -146,6 +146,8 @@ bool ImageSegment::isWritable() { return _flags & WRITABLE; }
 ///
 bool ImageSegment::hasContent() { return _flags & CONTENT; }
 
+bool ImageSegment::hasContentInFile() { return true; }
+
 ///
 Buffer ImageSegment::buffer() { return _buf; }
 

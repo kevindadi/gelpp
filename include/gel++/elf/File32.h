@@ -76,6 +76,7 @@ public:
 	bool isExecutable() override;
 	bool isWritable() override;
 	bool hasContent() override;
+	bool hasContentInFile() override;
 
 	// Section overload
 	size_t fileSize() override;
