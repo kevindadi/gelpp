@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.0)
+cmake_minimum_required (VERSION 3.5)
 project (GEL++)
 set(GEL_MAJOR	2)
 set(GEL_MINOR	0)
